@@ -427,6 +427,7 @@ async def get_file_content(
 
         custom_llm_provider = (
             provider
+            or get_custom_llm_provider_from_request_query(request=request)
             or await get_custom_llm_provider_from_request_body(request=request)
             or "openai"
         )
@@ -919,6 +920,7 @@ async def list_files(
         else:
             custom_llm_provider = (
                 provider
+                or get_custom_llm_provider_from_request_query(request=request)
                 or await get_custom_llm_provider_from_request_body(request=request)
                 or "openai"
             )
